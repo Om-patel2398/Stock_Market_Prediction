@@ -9,11 +9,11 @@ def Feature_engineering():
 
     import pandas as pd
     
-    #save_location = r'data/saved_files/Stocks_and_ETF_smallfile.parquet'
-    #modifed_saved_location = r'data/saved_files/Stocks_and_ETF_smallfile_Modified.parquet'
-    
     save_location = r'data/saved_files/Stocks_and_ETF.parquet'
     modifed_saved_location = r'data/saved_files/Stocks_and_ETF_Modified.parquet'
+    # incase using small dataset to test the working of DAG, comment the above both paths and uncomment the below paths
+    #save_location = r'data/saved_files/Stocks_and_ETF_smallfile.parquet'
+    #modifed_saved_location = r'data/saved_files/Stocks_and_ETF_smallfile_Modified.parquet'
     
     window_size = 30
     
