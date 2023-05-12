@@ -10,8 +10,9 @@ def moving_mean_unit_test():
     import random
     from statistics import mean
     
-    #saved_location = r'data/saved_files/Stocks_and_ETF_smallfile_Modified.parquet'
     saved_location = r'data/saved_files/Stocks_and_ETF_Modified.parquet'
+    # incase using small dataset to test the working of DAG, comment the above path and uncomment the below path
+    #saved_location = r'data/saved_files/Stocks_and_ETF_smallfile_Modified.parquet'
     
     # read parquet file
     Stocks_and_ETF_Modified = pd.read_parquet(saved_location, engine='fastparquet')
@@ -35,8 +36,9 @@ def moving_median_unit_test():
     import random
     from statistics import mean
     
-    #saved_location = r'data/saved_files/Stocks_and_ETF_smallfile_Modified.parquet'
     saved_location = r'data/saved_files/Stocks_and_ETF_Modified.parquet'
+    # incase using small dataset to test the working of DAG, comment the above path and uncomment the below path
+    #saved_location = r'data/saved_files/Stocks_and_ETF_smallfile_Modified.parquet'
     
     # read parquet file
     Stocks_and_ETF_Modified = pd.read_parquet(saved_location, engine='fastparquet')
