@@ -12,8 +12,9 @@ def ML_model():
     from sklearn.linear_model import LinearRegression
     from sklearn.metrics import mean_absolute_error, mean_squared_error
     
-    #saved_location = r'data/saved_files/Stocks_and_ETF_smallfile_Modified.parquet'
     saved_location = r'data/saved_files/Stocks_and_ETF_Modified.parquet'
+    # incase using small dataset to test the working of DAG, comment the above path and uncomment the below path
+    #saved_location = r'data/saved_files/Stocks_and_ETF_smallfile_Modified.parquet'
     
     data = pd.read_parquet(saved_location, engine='fastparquet')
     
