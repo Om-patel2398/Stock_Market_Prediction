@@ -1,0 +1,7 @@
+stock_data/
+__pycache__/
+
+data/Stocks_and_ETF.parquet
+data/Stocks_and_ETF_Modified.parquet
+data/saved_files/Stocks_and_ETF.parquet
+data/saved_files/Stocks_and_ETF_Modified.parquet

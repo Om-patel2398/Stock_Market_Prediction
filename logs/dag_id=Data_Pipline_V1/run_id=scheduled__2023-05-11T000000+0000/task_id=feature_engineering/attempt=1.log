@@ -1,0 +1,53 @@
+[2023-05-12T00:00:04.294+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Data_Pipline_V1.feature_engineering scheduled__2023-05-11T00:00:00+00:00 [queued]>
+[2023-05-12T00:00:04.300+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Data_Pipline_V1.feature_engineering scheduled__2023-05-11T00:00:00+00:00 [queued]>
+[2023-05-12T00:00:04.300+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 6
+[2023-05-12T00:00:04.315+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): feature_engineering> on 2023-05-11 00:00:00+00:00
+[2023-05-12T00:00:04.319+0000] {standard_task_runner.py:57} INFO - Started process 575 to run task
+[2023-05-12T00:00:04.321+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Data_Pipline_V1', 'feature_engineering', 'scheduled__2023-05-11T00:00:00+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/Trial_1.py', '--cfg-path', '/tmp/tmp1ur72jm_']
+[2023-05-12T00:00:04.323+0000] {standard_task_runner.py:85} INFO - Job 8: Subtask feature_engineering
+[2023-05-12T00:00:04.370+0000] {task_command.py:410} INFO - Running <TaskInstance: Data_Pipline_V1.feature_engineering scheduled__2023-05-11T00:00:00+00:00 [running]> on host 89977a816161
+[2023-05-12T00:00:04.443+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Data_Pipline_V1' AIRFLOW_CTX_TASK_ID='feature_engineering' AIRFLOW_CTX_EXECUTION_DATE='2023-05-11T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-05-11T00:00:00+00:00'
+[2023-05-12T00:00:37.417+0000] {local_task_job_runner.py:232} INFO - Task exited with return code Negsignal.SIGKILL
+[2023-05-12T00:00:38.376+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-05-12T02:31:37.287+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Data_Pipline_V1.feature_engineering scheduled__2023-05-11T00:00:00+00:00 [queued]>
+[2023-05-12T02:31:37.328+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Data_Pipline_V1.feature_engineering scheduled__2023-05-11T00:00:00+00:00 [queued]>
+[2023-05-12T02:31:37.329+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 6
+[2023-05-12T02:31:37.349+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): feature_engineering> on 2023-05-11 00:00:00+00:00
+[2023-05-12T02:31:37.354+0000] {standard_task_runner.py:57} INFO - Started process 181 to run task
+[2023-05-12T02:31:37.374+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Data_Pipline_V1', 'feature_engineering', 'scheduled__2023-05-11T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/Trial_1.py', '--cfg-path', '/tmp/tmp252tpi9i']
+[2023-05-12T02:31:37.375+0000] {standard_task_runner.py:85} INFO - Job 5: Subtask feature_engineering
+[2023-05-12T02:31:37.746+0000] {task_command.py:410} INFO - Running <TaskInstance: Data_Pipline_V1.feature_engineering scheduled__2023-05-11T00:00:00+00:00 [running]> on host 97c2f3bd64ee
+[2023-05-12T02:31:37.987+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Data_Pipline_V1' AIRFLOW_CTX_TASK_ID='feature_engineering' AIRFLOW_CTX_EXECUTION_DATE='2023-05-11T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-05-11T00:00:00+00:00'
+[2023-05-12T02:31:41.181+0000] {taskinstance.py:1847} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/python_scripts/Feature_engineering.py", line 18, in Feature_engineering
+    Stocks_and_ETF = pd.read_parquet(save_location, engine='fastparquet')
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/parquet.py", line 500, in read_parquet
+    **kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/pandas/io/parquet.py", line 346, in read
+    result = parquet_file.to_pandas(columns=columns, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/fastparquet/api.py", line 732, in to_pandas
+    size = sum(rg.num_rows for rg in rgs)
+TypeError: unsupported operand type(s) for +: 'int' and 'dict'
+[2023-05-12T02:31:41.198+0000] {taskinstance.py:1373} INFO - Marking task as UP_FOR_RETRY. dag_id=Data_Pipline_V1, task_id=feature_engineering, execution_date=20230511T000000, start_date=20230512T023137, end_date=20230512T023141
+[2023-05-12T02:31:41.214+0000] {standard_task_runner.py:109} ERROR - Failed to execute job 5 for task feature_engineering (unsupported operand type(s) for +: 'int' and 'dict'; 181)
+[2023-05-12T02:31:41.246+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 1
+[2023-05-12T02:31:41.277+0000] {taskinstance.py:2674} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2023-05-12T02:57:26.961+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Data_Pipline_V1.feature_engineering scheduled__2023-05-11T00:00:00+00:00 [queued]>
+[2023-05-12T02:57:26.982+0000] {taskinstance.py:1125} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Data_Pipline_V1.feature_engineering scheduled__2023-05-11T00:00:00+00:00 [queued]>
+[2023-05-12T02:57:26.983+0000] {taskinstance.py:1331} INFO - Starting attempt 1 of 6
+[2023-05-12T02:57:27.004+0000] {taskinstance.py:1350} INFO - Executing <Task(PythonOperator): feature_engineering> on 2023-05-11 00:00:00+00:00
+[2023-05-12T02:57:27.010+0000] {standard_task_runner.py:57} INFO - Started process 257 to run task
+[2023-05-12T02:57:27.019+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'Data_Pipline_V1', 'feature_engineering', 'scheduled__2023-05-11T00:00:00+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/Trial_1.py', '--cfg-path', '/tmp/tmpp4mp364t']
+[2023-05-12T02:57:27.020+0000] {standard_task_runner.py:85} INFO - Job 17: Subtask feature_engineering
+[2023-05-12T02:57:27.115+0000] {task_command.py:410} INFO - Running <TaskInstance: Data_Pipline_V1.feature_engineering scheduled__2023-05-11T00:00:00+00:00 [running]> on host ab6e2f77b8cb
+[2023-05-12T02:57:27.220+0000] {taskinstance.py:1570} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='Data_Pipline_V1' AIRFLOW_CTX_TASK_ID='feature_engineering' AIRFLOW_CTX_EXECUTION_DATE='2023-05-11T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-05-11T00:00:00+00:00'
+[2023-05-12T02:57:30.129+0000] {logging_mixin.py:149} INFO - New columns added
+[2023-05-12T02:57:30.140+0000] {python.py:183} INFO - Done. Returned value was: None
+[2023-05-12T02:57:30.151+0000] {taskinstance.py:1373} INFO - Marking task as SUCCESS. dag_id=Data_Pipline_V1, task_id=feature_engineering, execution_date=20230511T000000, start_date=20230512T025726, end_date=20230512T025730
+[2023-05-12T02:57:30.205+0000] {local_task_job_runner.py:232} INFO - Task exited with return code 0
+[2023-05-12T02:57:30.227+0000] {taskinstance.py:2674} INFO - 2 downstream tasks scheduled from follow-on schedule check

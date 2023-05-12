@@ -1,0 +1,7 @@
+stock_data/
+
+Stocks_and_ETF.parquet
+Stocks_and_ETF_Modified.parquet
+
+saved_files/Stocks_and_ETF.parquet
+saved_files/Stocks_and_ETF_Modified.parquet

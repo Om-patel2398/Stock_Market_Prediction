@@ -1,0 +1,5 @@
+fastparquet
+pandas
+numpy
+random
+psycopg2
