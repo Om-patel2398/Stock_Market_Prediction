@@ -8,7 +8,6 @@ Created on Sat Apr 29 03:44:23 2023
 def Raw_Data_Processing():
     
     import pandas as pd
-    #from local_config import meta_data_file, stock_data_file, etf_data_file, final_location
     import glob
     import os
     
@@ -19,9 +18,10 @@ def Raw_Data_Processing():
     stock_data_file = r'data/stock_data/stocks/'
 
     etf_data_file = r'data/stock_data/etfs/'
-
-    #save_location = r'data/saved_files/Stocks_and_ETF_smallfile.parquet'
+    
     save_location = r'data/saved_files/Stocks_and_ETF.parquet'
+    # incase using small dataset to test the working of DAG, comment the above path and uncomment the below path
+    # save_location = r'data/saved_files/Stocks_and_ETF_smallfile.parquet'
 
     ''' Read metadata file '''
     meta_data_file = pd.read_csv(meta_data_file)
@@ -65,11 +65,15 @@ def Raw_Data_Processing():
             return 0
     
     for filename in all_etf_files:
-        symbol = filename.split("/")[-1].split(".csv")[0]
-        individual_etf_dataframe = pd.read_csv(filename, index_col=None, header=0)
-        individual_etf_dataframe["Symbol"] = symbol
-        individual_etf_dataframe["Security Name"] = ETF_metadata[ETF_metadata["Symbol"] == symbol]["Security Name"].values[0]
-        every_file_as_dataframe.append(individual_etf_dataframe)
+        try:
+            symbol = filename.split("/")[-1].split(".csv")[0]
+            individual_etf_dataframe = pd.read_csv(filename, index_col=None, header=0)
+            individual_etf_dataframe["Symbol"] = symbol
+            individual_etf_dataframe["Security Name"] = ETF_metadata[ETF_metadata["Symbol"] == symbol]["Security Name"].values[0]
+            every_file_as_dataframe.append(individual_etf_dataframe)
+        except:
+            print(filename)
+            return 0
     
     # Concate all individual stock dataframe into single dataframe
     Stocks_and_ETF = pd.concat(every_file_as_dataframe, axis=0, ignore_index=True)
@@ -77,10 +81,10 @@ def Raw_Data_Processing():
     # Convert Volume column to int from float, but first convert all nan and null values to 0
     Stocks_and_ETF['Volume'] = Stocks_and_ETF['Volume'].fillna(0)
     
-    
-    #Stocks_and_ETF.iloc[0:100000].to_parquet(save_location, engine='fastparquet')
     # Store the final data frame as parquet file
     Stocks_and_ETF.to_parquet(save_location, engine='fastparquet')
+    # incase using small dataset to test the working of DAG, comment the above line and uncomment the below path. The slicing index can be changed!
+    # Stocks_and_ETF.iloc[0:100000].to_parquet(save_location, engine='fastparquet')
     print('Raw data processing done!')
     
     return 0
